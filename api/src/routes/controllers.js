@@ -13,6 +13,7 @@ const getApi = async() => {
             id: all.data.id,
             name: all.data.name,
             image: all.data.sprites.front_shiny,
+            force: all.data.is_default,
             type: all.data.types.map(i => i.type.name)
         };
         pokes.push(allpokes)
