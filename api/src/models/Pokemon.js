@@ -1,4 +1,4 @@
-const { DataTypes, BOOLEAN } = require('sequelize');
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -15,19 +15,19 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     life: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull:true
     },
     force: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     defense: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     speed: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     height: {
@@ -35,7 +35,7 @@ module.exports = (sequelize) => {
       allowNull: true
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     createdInDb: {

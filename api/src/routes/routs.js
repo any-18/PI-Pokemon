@@ -39,9 +39,9 @@ router.get('/pokemons/:id', async(req, res) => {
             const details = {
                 id: data.id,
                 name: data.name,
-                image: data.sprites.front_shiny,
-                life: data.base_experience,
-                force: data.is_default,
+                image: data.sprites.other.dream_world.front_default,
+                life: data.stats[0].base_stat,
+                force: data.stats[1].base_stat,
                 defense: data.stats[2].base_stat,
                 speed: data.stats[5].base_stat,
                 height: data.height,
@@ -58,14 +58,15 @@ router.get('/pokemons/:id', async(req, res) => {
 
 router.get('/types', async(req, res) => {
     const {data} = await axios.get('https://pokeapi.co/api/v2/type')
-    const types = data.results
-    for(var i = 0; i < types.length; i++) {
-        await TypePokemon.findOrCreate({
+    const types = data.results.map(i => i.name)
+    const dbTypes = types.flat()
+    dbTypes.forEach(i => {
+        TypePokemon.findOrCreate({
             where: {
-                name: types[i].name
+                name: i
             }
         });
-    };
+    })
     const allTypes = await TypePokemon.findAll()
     return res.status(200).send(allTypes);
 });
@@ -81,7 +82,7 @@ router.post('/pokemon', async(req, res) => {
         height,
         weight,
         createdInDb,
-        typePokemon
+        type
     } = req.body;
 
     const addPoke = await Pokemon.create({
@@ -97,11 +98,10 @@ router.post('/pokemon', async(req, res) => {
 
     const createdDb = await TypePokemon.findAll({
         where: {
-            name: typePokemon
+            name: type
         }
     });
-
-    addPoke.addTypePokemon(createdDb)
+    addPoke.addTypePokemons(createdDb)
     return res.status(200).send('Pokemon creado con exito')
 });
 

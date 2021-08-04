@@ -6,6 +6,7 @@ import { getPokemons, byCreated, byOrder, byForce } from '../../actions/index.js
 import PokeCard from './PokeCard/index.jsx';
 import SearchBar from './SearchBar/index.jsx';
 import Paginado from './Paginado/index.jsx';
+import './home.css';
 
 function Home() {
 
@@ -48,34 +49,35 @@ function Home() {
     }
 
     return (
-      <div className="App">
-        <Link to='/pokemon'>Created Pokemon</Link>
-        <h1>YOUR API POKEMONS</h1>
-        <button onClick={e => {handleClick(e)}}>Volver a cargas los pokemons</button>
-        <SearchBar></SearchBar>
-        <select onChange={e => handleCreated(e)}>
-            <option value='All'>All Pokes</option>
-            <option value='Created'>My poke</option>
-            <option value='Api'>Api Pokes</option>
-        </select>
-        <div>
-            <h5>By Order</h5>
-            <select onChange={e => handleOrder(e)}>
-                <option value='Asc'>Asc</option>
-                <option value='Desc'>Desc</option>
+      <div className="home">
+        <div className='allhome'>
+            <Link className='linkHome' to='/pokemon'>Created Pokemon</Link>
+            <button className='pokemons' onClick={e => {handleClick(e)}}>Volver a cargas los pokemons</button>
+            <SearchBar></SearchBar>
+            <select className='selects' onChange={e => handleCreated(e)}>
+                <option value='All'>All Pokes</option>
+                <option value='Created'>My poke</option>
+                <option value='Api'>Api Pokes</option>
             </select>
-            <h5>By Force</h5>
-            <select onChange={e => handleForce(e)}>
-                <option value='Asc'>Asc</option>
-                <option value='Desc'>Desc</option>
-            </select>
+            <div className='byOrder'>
+                <h5>By Order</h5>
+                <select className='selects' onChange={e => handleOrder(e)}>
+                    <option value='Asc'>Ascendente</option>
+                    <option value='Desc'>Descendente</option>
+                </select>
+                <h5>By Force</h5>
+                <select className='selects' onChange={e => handleForce(e)}>
+                    <option value='Asc'>Ascendente</option>
+                    <option value='Desc'>Descendente</option>
+                </select>
+            </div>
         </div>
         <Paginado
             pokePage={pokePage}
             allpokes={allpokes.length}
             paginado={paginado}
         ></Paginado>
-        <div>
+        <div className='byCard'>
             {
                 allPagPokes?.map(i => {
                     return (

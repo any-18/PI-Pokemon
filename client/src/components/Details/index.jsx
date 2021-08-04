@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { getDetails } from '../../actions/index.jsx';
+import './details.css';
 
 function Details(props) {
 
@@ -16,27 +17,32 @@ function Details(props) {
     }, [id, dispatch]);
 
     return (
-      <div className="App">
+      <div className="details">
         {
             loading ?
-            <div>
-                <h4>{details.id}</h4>
-                <h2>{details.name}</h2>
+            <div className='allDetails'>
+                <h6 className='idDetails'>{details.id}</h6>
+                <h1 className='nameDetails'>{details.name}</h1>
                 <div>
-                    <img src={details.image} alt='Image Not Found' width='200px' height='250px'></img>
-                    <h3>Types</h3>
+                    <img className='imgDetails' src={details.image} alt='Image Not Found' width='200px' height='250px'></img>
+                    <hr className='hr'></hr>
+                    <h1 className='typesD'>Types</h1>
                     {
                         details.type?.map(i => (
-                            <h5>{i}</h5>
+                            <h3>{i}</h3>
                         ))
                     }
-                    <h3>Statistics</h3>
-                    <h5>{details.life}</h5>
-                    <h5>{details.force}</h5>
-                    <h5>{details.defense}</h5>
-                    <h5>{details.speed}</h5>
-                    <h3>{details.height}</h3>
-                    <h3>{details.weight}</h3>
+                    <hr className='hr'></hr>
+                    <div className='stadistics'>
+                        <h1>Statistics</h1>
+                        <h4>Life: {details.life}</h4>
+                        <h4>Force: {details.force}</h4>
+                        <h4>Defense: {details.defense}</h4>
+                        <h4>Speed: {details.speed}</h4>
+                    </div>
+                    <hr className='hr'></hr>
+                    <h3>Height: {details.height}</h3>
+                    <h3>Weight: {details.weight}</h3>
                 </div>
             </div> :
             <div>Loading</div>

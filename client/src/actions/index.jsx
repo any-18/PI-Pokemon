@@ -76,7 +76,7 @@ export function getDetails(id) {
 
 export function getTypes() {
     return async function(dispatch) {
-        const res = await axios.get('localhost:3001/type')
+        const res = await axios.get('localhost:3001/types')
         return dispatch({
             type: TYPES,
             payload: res.data

@@ -1,0 +1,21 @@
+.imgLanding {
+    background-image: url(./any.png);
+    height: 100vh;
+}
+
+.buttonLanding {
+    display: inline-block;
+    position: relative;
+}
+
+.buttonLanding button {
+    position: absolute;
+    bottom: 70em;
+    right: 92em;
+    background-color: #43658B;
+    text-transform: uppercase;
+    padding: 1em 2em;
+    font-weight: 1000;
+    border-color: #4E89AE;
+    border-radius: 5%;
+}

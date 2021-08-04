@@ -1,5 +1,4 @@
 const axios = require('axios');
-const db = require('../db.js');
 const { Pokemon, TypePokemon, poke_type } = require('../db.js');
 
 const getApi = async() => {
@@ -12,8 +11,8 @@ const getApi = async() => {
         const allpokes =  {
             id: all.data.id,
             name: all.data.name,
-            image: all.data.sprites.front_shiny,
-            force: all.data.is_default,
+            image: all.data.sprites.other.dream_world.front_default,
+            force: all.data.stats[1].base_stat,
             type: all.data.types.map(i => i.type.name)
         };
         pokes.push(allpokes)

@@ -1,0 +1,64 @@
+.home {
+    background-image: url(./homeAny.png);
+}
+
+.allhome {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: 3rem;
+    color: ivory;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.linkHome {
+    text-decoration: none;
+    color: #39A2DB;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pokemons {
+    background-color: #39A2DB;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    border: 1px solid black;
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+.pokemons:hover{
+    background: #F2A51A;
+    border-radius: 7px;
+    opacity: 0.7;
+}
+
+.selects {
+    background-color: #39A2DB;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.selects:hover{
+    background: #F2A51A;
+    border-radius: 5px;
+    opacity: 0.7;
+}
+
+.byOrder {
+    display: flex;
+    margin-top: 1rem;
+    font-size: 10px;
+    opacity: 0.7;
+}
+
+.byCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

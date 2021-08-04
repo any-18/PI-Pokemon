@@ -12,12 +12,12 @@ function AddPokemon() {
   const types = useSelector(e => e.types)
   const [input, setInput] = useState({
     name: '',
-    life: '',
-    force: '',
-    defense: '',
-    speed: '',
-    height: '',
-    weight: '',
+    life: 0,
+    force: 0,
+    defense: 0,
+    speed: 0,
+    height: 0,
+    weight: 0,
     typePokemon: []
   });
 
@@ -111,7 +111,7 @@ function AddPokemon() {
         <select onChange={e => handleSelect(e)}>
           {
             types.map(i => (
-              <option value={i.name}>{i.name}</option>
+              <option key={i.id} value={i.name}>{i.name}</option>
             ))
           }
             <ul>

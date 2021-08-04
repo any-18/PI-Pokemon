@@ -1,0 +1,23 @@
+.searcBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: #A2DBFA;
+}
+
+.buttonSearch {
+    background-color: #39A2DB;
+    margin-left: 0.2rem;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    border: 0.1px solid black;
+}
