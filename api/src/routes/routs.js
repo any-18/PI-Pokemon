@@ -58,18 +58,19 @@ router.get('/pokemons/:id', async(req, res) => {
 
 router.get('/types', async(req, res) => {
     const {data} = await axios.get('https://pokeapi.co/api/v2/type')
-    const types = data.results.map(i => i.name)
-    const dbTypes = types.flat()
-    dbTypes.forEach(i => {
-        TypePokemon.findOrCreate({
+    const types = data.results
+    for(var i = 0; i < types.length; i++) {
+        await TypePokemon.findOrCreate({
             where: {
-                name: i
+                name: types[i].name
             }
-        });
-    })
+        })
+    }
     const allTypes = await TypePokemon.findAll()
-    return res.status(200).send(allTypes);
+    console.log(allTypes)
+    return res.status(200).send(allTypes)
 });
+
 
 
 router.post('/pokemon', async(req, res) => {

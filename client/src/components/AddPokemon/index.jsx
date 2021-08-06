@@ -10,6 +10,7 @@ function AddPokemon() {
   const dispatch = useDispatch();
   const history = useHistory();
   const types = useSelector(e => e.types)
+  console.log(types);
   const [input, setInput] = useState({
     name: '',
     life: 0,
@@ -74,43 +75,43 @@ function AddPokemon() {
         </div>
         <div>
           <label>life:</label>
-          <input type='text' value={input.life} name='life'
+          <input type='number' value={input.life} name='life'
             onChange={e => handleChange(e)}>  
           </input>
         </div>
         <div>
           <label>force:</label>
-            <input type='text' value={input.force} name='force'
+            <input type='number' value={input.force} name='force'
               onChange={e => handleChange(e)}>  
             </input>
         </div>
         <div>
           <label>defense:</label>
-            <input type='text' value={input.defense} name='defense'
+            <input type='number' value={input.defense} name='defense'
             onChange={e => handleChange(e)}>  
           </input>
         </div>
         <div>
           <label>speed:</label>
-            <input type='text' value={input.speed} name='speed'
+            <input type='number' value={input.speed} name='speed'
             onChange={e => handleChange(e)}>  
           </input>
         </div>
         <div>
           <label>height:</label>
-            <input type='text' value={input.height} name='height'
+            <input type='number' value={input.height} name='height'
             onChange={e => handleChange(e)}>  
           </input>
         </div>
         <div>
           <label>weight:</label>
-            <input type='text' value={input.weight} name='weight'
+            <input type='number' value={input.weight} name='weight'
             onChange={e => handleChange(e)}>  
           </input>
         </div>                        
         <select onChange={e => handleSelect(e)}>
           {
-            types.map(i => (
+            types?.map(i => (
               <option key={i.id} value={i.name}>{i.name}</option>
             ))
           }
