@@ -18,41 +18,16 @@ router.get('/pokemons', async(req, res) => {
 });
 
 
+
 router.get('/pokemons/:id', async(req, res) => {
     const {id} = req.params;
+    const poke = await getAll()
     if(id) {
-        const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-        if(id.length > 10) {
-            const idDb = await Pokemon.findOne({
-                where: {
-                    id: id
-                },
-                include: [{
-                    model: TypePokemon,
-                    through: poke_type
-                }]
-            });
-            console.log(idDb)
-            const all = idDb.dataValues
-            return res.status(200).send(all)
-        } else {
-            const details = {
-                id: data.id,
-                name: data.name,
-                image: data.sprites.other.dream_world.front_default,
-                life: data.stats[0].base_stat,
-                force: data.stats[1].base_stat,
-                defense: data.stats[2].base_stat,
-                speed: data.stats[5].base_stat,
-                height: data.height,
-                weight: data.weight,
-                type: data.types.map(i => i.type.name)
-            }
-            return res.status(200).send(details)
-        }
-    } else {
-        res.status(404).send('No encontramos tu pokemon')
-    };
+        const pokeId = await poke.filter(i => i.id == id)
+        pokeId.length?
+        res.status(200).json(pokeId) :
+        res.status(404).send('No encontré ese pokemon')
+    }
 });
 
 
@@ -67,7 +42,6 @@ router.get('/types', async(req, res) => {
         })
     }
     const allTypes = await TypePokemon.findAll()
-    console.log(allTypes)
     return res.status(200).send(allTypes)
 });
 

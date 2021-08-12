@@ -12,7 +12,12 @@ const getApi = async() => {
             id: all.data.id,
             name: all.data.name,
             image: all.data.sprites.other.dream_world.front_default,
+            life: all.data.stats[0].base_stat,
             force: all.data.stats[1].base_stat,
+            defense: all.data.stats[2].base_stat,
+            speed: all.data.stats[5].base_stat,
+            height: all.data.height,
+            weight: all.data.weight,
             type: all.data.types.map(i => i.type.name)
         };
         pokes.push(allpokes)
