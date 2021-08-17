@@ -12,6 +12,7 @@ function Home() {
 
     const dispatch = useDispatch();
     const allpokes = useSelector(e => e.pokemons);
+    const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState('');
     const [force, setForce] = useState('');
     const [page, setPage] = useState(1);
@@ -26,6 +27,7 @@ function Home() {
 
     useEffect(() => {
         dispatch(getPokemons());
+        setLoading(true)
     }, []);
 
     function handleClick(e) {
@@ -72,12 +74,15 @@ function Home() {
                 </select>
             </div>
         </div>
-        <Paginado
-            pokePage={pokePage}
-            allpokes={allpokes.length}
-            paginado={paginado}
-        ></Paginado>
-        <div className='byCard'>
+        {
+            loading?
+        <div>
+            <Paginado
+                pokePage={pokePage}
+                allpokes={allpokes.length}
+                paginado={paginado}
+            ></Paginado>
+            <div className='byCard'>
             {
                 allPagPokes?.map(i => {
                     return (
@@ -88,14 +93,16 @@ function Home() {
                                 name={i.name}
                                 image={i.image}
                                 type={
-                                    i.type?.map(i => (i))
+                                    i.createdInDb? i.typePokemons.map(i => (i.name)) : i.type.map(i => (i)) 
                                 }
                             ></PokeCard>
                         </div>
                     )
                 })
             }
-        </div>
+            </div>
+        </div> : <div>Loading...</div>
+        }
       </div>
     );
 };

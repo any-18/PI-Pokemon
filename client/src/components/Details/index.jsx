@@ -8,7 +8,6 @@ function Details(props) {
 
     const [loading, setLoading] = useState(false);
     const details = useSelector(i => i.details);
-    const pokemons = useSelector(i => i.pokemons);
     const dispatch = useDispatch();
     const {id} = props.match.params;
 
@@ -19,6 +18,8 @@ function Details(props) {
 
     return (
       <div className="details">
+          {
+            loading?
             <div className='allDetails'>
                 {
                     details.length > 0 ?
@@ -30,7 +31,7 @@ function Details(props) {
                             <hr className='hr'></hr>
                             <h1 className='typesD'>Types</h1>
                                 {
-                                    !details[0].createdINDb? details[0].type + '' : details[0].type.map(i => i.name + (''))}
+                                    details[0].createdInDb? details[0].typePokemons.map(i => i.name + (', ')) : details[0].type + '' }
                             <hr className='hr'></hr>
                             <div className='stadistics'>
                                 <h1>Statistics</h1>
@@ -43,9 +44,10 @@ function Details(props) {
                             <h3>Height: {details[0].height}</h3>
                             <h3>Weight: {details[0].weight}</h3>
                         </div>
-                    </div> : <div>Loading</div>
+                    </div> : <div>Loading...</div>
                 }
-            </div>
+            </div> : <div>Loading...</div>
+          }
         </div>
     );
   };

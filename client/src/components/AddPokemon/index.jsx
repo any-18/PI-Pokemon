@@ -115,10 +115,12 @@ function AddPokemon() {
             ))
           }
             <ul>
-              <li>{input.type.map(i => i + ", ")}</li>
+              <li>{input.type.map(i => i.name + ", ")}</li>
             </ul>
         </select>
-        <button className='buttonP' type='submit'>Crear Pokemon</button>  
+        <div>
+          <button className='buttonP' type='submit'>Crear Pokemon</button>  
+        </div>
       </form>      
     </div>
   );

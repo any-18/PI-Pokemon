@@ -59,7 +59,7 @@ function rooReducer(state = initialState, action) {
                 pokemons: orderName
             }
         case BYFORCE:
-            const orderForce = action.payload === 'Asc' ?
+            const orderForce = action.payload === 'Desc' ?
             state.pokemons.sort(function(a, b) {
                 if(a.force > b.force) {
                     return 1;
